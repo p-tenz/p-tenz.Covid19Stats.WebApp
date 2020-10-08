@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>p_tenz.Covid19Stats.WebApp</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\p-tenz.Covid19Stats.ApiLib\p-tenz.Covid19Stats.ApiLib.csproj" />
+  </ItemGroup>
+
+</Project>

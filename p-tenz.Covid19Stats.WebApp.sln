@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p-tenz.Covid19Stats.WebApp", "p-tenz.Covid19Stats.WebApp.csproj", "{F004B0DC-7C33-4E21-B0D3-60FB64E5C9AD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "p-tenz.Covid19Stats.ApiLib", "..\p-tenz.Covid19Stats.ApiLib\p-tenz.Covid19Stats.ApiLib.csproj", "{052E3F2D-B66F-4DD7-8913-70D7BE926D73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F004B0DC-7C33-4E21-B0D3-60FB64E5C9AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F004B0DC-7C33-4E21-B0D3-60FB64E5C9AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F004B0DC-7C33-4E21-B0D3-60FB64E5C9AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F004B0DC-7C33-4E21-B0D3-60FB64E5C9AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{052E3F2D-B66F-4DD7-8913-70D7BE926D73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{052E3F2D-B66F-4DD7-8913-70D7BE926D73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{052E3F2D-B66F-4DD7-8913-70D7BE926D73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{052E3F2D-B66F-4DD7-8913-70D7BE926D73}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ACD68AF7-3E5A-4306-B7C2-99C7095D2FC0}
+	EndGlobalSection
+EndGlobal
