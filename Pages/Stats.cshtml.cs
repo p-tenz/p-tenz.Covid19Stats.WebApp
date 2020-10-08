@@ -34,6 +34,14 @@ namespace p_tenz.Covid19Stats.WebApp.Pages
             this.Sunset = sunData.Sunset.ToLocalTime();
             this.SolarNoon = sunData.Solar_Noon.ToLocalTime();
 
+            var covid19Data = await CasesController.LoadCovidData();
+            foreach (var f in covid19Data)
+            {
+                _logger.LogInformation(f.attributes.Landkreis);
+                _logger.LogInformation("Neuer Fall:" + f.attributes.NeuerFall.ToString());
+                _logger.LogInformation("Meldedatum:" + f.attributes.Meldedatum.ToString());
+            }
+
             return Page();
         }
     }

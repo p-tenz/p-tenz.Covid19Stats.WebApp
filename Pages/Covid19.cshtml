@@ -1,0 +1,19 @@
+﻿@page
+@model p_tenz.Covid19Stats.WebApp.Pages.Covid19Model
+@{
+}
+<div class="text-center">
+    <h1 class="display-4">@Model.Title</h1>
+    <p>Read from <a href="https://sunrise-sunset.org">Sun API which is great!</a>.</p>
+    <p>
+        
+    <ul>
+        <li>Fälle: @Model.covid19Data.Sum(f => f.attributes.AnzahlFall)</li>
+        <li>Todesfälle: @Model.covid19Data.Sum(f => f.attributes.AnzahlTodesfall)</li>
+        <li>Genesene: @Model.covid19Data.Sum(f => f.attributes.AnzahlGenesen)</li>
+        <li>Neue Fälle: @Model.covid19Data.Sum(f => f.attributes.NeuerFall)</li>
+        <li>Neue Todesfälle: @Model.covid19Data.Sum(f => f.attributes.NeuerTodesfall)</li>
+        <li>Neue Genesene: @Model.covid19Data.Sum(f => f.attributes.NeuGenesen)</li>
+    </ul>
+    </p>
+</div>
