@@ -1,10 +1,65 @@
 ﻿@page
-@model IndexModel
+@model p_tenz.Covid19Stats.WebApp.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Pandemie Stuttgart";
+
+    var cases = Model.covid19Data.Where(f => f.attributes.NeuerFall == 0 | f.attributes.NeuerFall == 1).Sum(f => f.attributes.AnzahlFall);
+    var newcases = Model.covid19Data.Where(f => f.attributes.NeuerFall == -1 | f.attributes.NeuerFall == 1).Sum(f => f.attributes.AnzahlFall);
+
+    var deaths = Model.covid19Data.Where(f => f.attributes.NeuerTodesfall == 0 | f.attributes.NeuerTodesfall == 1).Sum(f => f.attributes.AnzahlTodesfall);
+    var newdeaths = Model.covid19Data.Where(f => f.attributes.NeuerTodesfall == -1 | f.attributes.NeuerTodesfall == 1).Sum(f => f.attributes.AnzahlTodesfall);
+
+    var recovered = Model.covid19Data.Where(f => f.attributes.NeuGenesen == 0 | f.attributes.NeuGenesen == 1).Sum(f => f.attributes.AnzahlGenesen);
+    var newrecovered = Model.covid19Data.Where(f => f.attributes.NeuGenesen == -1 | f.attributes.NeuGenesen == 1).Sum(f => f.attributes.AnzahlGenesen);
 }
 
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">@Model.Title</h1>
+    <h2>@Model.SubTitle</h2>
+    <p>Read from <a href="https://www.arcgis.com/home/item.html?id=dd4580c810204019a7b8eb3e0b329dd6">RKI API</a> which is a little complicated.</p>
 </div>
+<div>
+    <h3>Bemerkungen</h3>
+    <ul>
+        <li>Anzahl Fälle der aktuellen Publikation als Summe(AnzahlFall), wenn NeuerFall in (0,1)</li>
+        <li>Aktuelle Fälle = Fälle - Todesfälle - Genesene</li>
+        <li>Delta zum Vortag als Summe(AnzahlFall) wenn NeuerFall in (-1,1)</li>
+    </ul>
+
+    <table id="myTable" class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="bg-light">Fälle</th>
+                <th class="bg-light">seit gestern</th>
+                <th class="bg-light">pro 100.000</th>
+                <th>Todesfälle</th>
+                <th>seit gestern</th>
+                <th>pro 100.000</th>
+                <th class="bg-light">Genesene</th>
+                <th class="bg-light">seit gestern</th>
+                <th class="bg-light">pro 100.000</th>
+                <th>Aktuelle Fälle</th>
+                <th>seit gestern</th>
+                <th>pro 100.000</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="bg-light">@cases</td>
+                <td class="bg-light"> @newcases</td>
+                <td class="bg-light">@Math.Round(cases / 6.13)</td>
+                <td>@deaths</td>
+                <td>@newdeaths</td>
+                <td>@Math.Round(deaths / 6.13)</td>
+                <td class="bg-light">@recovered</td>
+                <td class="bg-light">@newrecovered</td>
+                <td class="bg-light">@Math.Round(recovered / 6.13)</td>
+                <td>@(cases - deaths - recovered)</td>
+                <td>@(newcases - newdeaths - newrecovered)</td>
+                <td>@Math.Round((cases - deaths - recovered) / 6.13)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
