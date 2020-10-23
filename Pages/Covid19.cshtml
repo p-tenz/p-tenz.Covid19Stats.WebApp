@@ -4,16 +4,31 @@
 }
 <div class="text-center">
     <h1 class="display-4">@Model.Title</h1>
-    <p>Read from <a href="https://sunrise-sunset.org">Sun API which is great!</a>.</p>
-    <p>
-        
+    <h2>@Model.SubTitle</h2>
+    <p>Read from <a href="https://www.arcgis.com/home/item.html?id=dd4580c810204019a7b8eb3e0b329dd6">RKI API</a> which is great!.</p>
+</div>
+<div>
+    Anzahl Fälle der aktuellen Publikation als Summe(AnzahlFall), wenn NeuerFall in (0,1)</br>
+    Delta zum Vortag als Summe(AnzahlFall) wenn NeuerFall in (-1,1)
     <ul>
-        <li>Fälle: @Model.covid19Data.Sum(f => f.attributes.AnzahlFall)</li>
-        <li>Todesfälle: @Model.covid19Data.Sum(f => f.attributes.AnzahlTodesfall)</li>
-        <li>Genesene: @Model.covid19Data.Sum(f => f.attributes.AnzahlGenesen)</li>
-        <li>Neue Fälle: @Model.covid19Data.Sum(f => f.attributes.NeuerFall)</li>
-        <li>Neue Todesfälle: @Model.covid19Data.Sum(f => f.attributes.NeuerTodesfall)</li>
-        <li>Neue Genesene: @Model.covid19Data.Sum(f => f.attributes.NeuGenesen)</li>
+        <li>
+            Fälle: @Model.covid19Data.Where(f => f.attributes.NeuerFall == 0 | f.attributes.NeuerFall == 1).Sum(f => f.attributes.AnzahlFall)
+        </li>
+        <li>
+            Todesfälle: @Model.covid19Data.Where(f => f.attributes.NeuerTodesfall == 0 | f.attributes.NeuerTodesfall == 1).Sum(f => f.attributes.AnzahlTodesfall)
+        </li>
+        <li>
+            Genesene: @Model.covid19Data.Where(f => f.attributes.NeuGenesen == 0 | f.attributes.NeuGenesen == 1).Sum(f => f.attributes.AnzahlGenesen)
+        </li>
+        <li>
+            Neue Fälle seit gestern: @Model.covid19Data.Where(f => f.attributes.NeuerFall == -1 | f.attributes.NeuerFall == 1).Sum(f => f.attributes.AnzahlFall)
+        </li>
+        <li>
+            Neue Todesfälle seit gestern: @Model.covid19Data.Where(f => f.attributes.NeuerTodesfall == -1 | f.attributes.NeuerTodesfall == 1).Sum(f => f.attributes.AnzahlTodesfall)
+        </li>
+        <li>
+            Neue Genesene seit gestern: @Model.covid19Data.Where(f => f.attributes.NeuGenesen == -1 | f.attributes.NeuGenesen == 1).Sum(f => f.attributes.AnzahlGenesen)
+        </li>
     </ul>
     </p>
 </div>
